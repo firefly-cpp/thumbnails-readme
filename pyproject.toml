@@ -6,6 +6,8 @@ authors = ["Rok Kukovec <rok.kukovec1@um.si>", "firefly-cpp <iztok@iztok-jr-fist
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pdf2image = "^1.16.2"
+Pillow = "^9.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
