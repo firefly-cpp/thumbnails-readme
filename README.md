@@ -5,11 +5,11 @@ This is a simple library, that allows you to automatically generate thumbnails f
 Example: finds files in your directories
 * ['glyph_example.pdf', 'heart-rate-monitor-to-data-mining-evolution.pdf', **'pismenka-interval.pdf'**, 'pismenka-trajanje.pdf']
 
-Creates a thumbnails
+## Creates a thumbnails
 
 ![2023-01-05 10_54_02-000244](https://user-images.githubusercontent.com/33880044/210753771-7612a1c4-c7ec-4c75-9033-69652b816841.png)
 
-Adds it to README.md
+## Adds it to README.md
 
 `![Thumbnail](/image_thumbnails/PDFpismenka-interval_thumb.png)`
 
