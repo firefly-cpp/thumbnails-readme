@@ -3,6 +3,14 @@ name = "thumbnails-readme"
 version = "0.1.0"
 description = ""
 authors = ["Rok Kukovec <rok.kukovec1@um.si>", "firefly-cpp <iztok@iztok-jr-fister.eu>"]
+keywords = ['thumbnails', 'README']
+homepage = "https://github.com/firefly-cpp/thumbnails-readme"
+repository = "https://github.com/firefly-cpp/thumbnails-readme"
+readme = "README.md"
+
+include = [
+    { path="LICENSE", format="sdist" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
