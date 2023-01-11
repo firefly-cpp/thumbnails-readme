@@ -118,7 +118,7 @@ def crawl(
     # r+ to allow reading and writing
     with open(path_to_readme, "a") as readme:
         # Write TITLE # Generated Thumbnails  to the README.md file
-        readme.write("\n# Generated Thumbnails")
+        readme.write("\n# Generated Thumbnails\n")
 
         # Loop through all files and folders in the current directory
         # for directory in os.walk(path):
