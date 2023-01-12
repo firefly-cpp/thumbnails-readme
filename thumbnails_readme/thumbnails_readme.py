@@ -5,6 +5,7 @@ from pathlib import Path
 
 from pdf2image import convert_from_path
 from PIL import Image
+import cairosvg
 
 
 class ImageThumbnail:
@@ -55,6 +56,14 @@ class ImageThumbnail:
                 f"{path_to_thumbnails_folder}"
                 f"/pdf{self.file_name}_thumb.png"
             )
+    def create_svg_thumbnail(self, path_to_thumbnails_folder):
+        """
+        Create thumbnail for the SVG
+        """
+        cairosvg.svg2png(url=str(self.path_to_file), write_to=
+            f"{path_to_thumbnails_folder}"
+            f"/svg{self.file_name}_thumb.png"
+         )
 
     def write_to_readme(self, readme):
         """
@@ -142,11 +151,14 @@ def crawl(
                     image.create_pdf_thumbnail(
                         path_to_thumbnails_folder, poppler_path
                     )
+                elif image.file_extension == ".svg":
+                    image.create_svg_thumbnail(path_to_thumbnails_folder)
                 if image.file_extension in [
                     ".jpg",
                     ".jpeg",
                     ".png",
                     ".gif",
                     ".pdf",
+                    ".svg",
                 ]:
                     image.write_to_readme(readme)
