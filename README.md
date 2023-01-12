@@ -1,5 +1,16 @@
-# thumbnails-readme
+# thumbnails-readme --- Create thumbnails
 
+---
+![PyPI Version](https://img.shields.io/pypi/v/thumbnails-readme.svg)](https://pypi.python.org/pypi/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/thumbnails-readme.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/thumbnails-readme.svg)
+[![Downloads](https://pepy.tech/badge/thumbnails-readme)](https://pepy.tech/project/thumbnails-readme)
+[![GitHub license](https://img.shields.io/github/license/firefly-cpp/thumbnails-readme.svg)](https://github.com/firefly-cpp/thumbnails-readme/blob/master/LICENSE)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/thumbnails-readme.svg)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Percentage of issues still open")
+
+## Description
 The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders and show thumbnails in the README file of that Git folder.
 
 ## How it works?
