@@ -53,7 +53,7 @@ class ImageThumbnail:
         for image in images:
             image.save(
                 f"{path_to_thumbnails_folder}"
-                f"/PDF{self.file_name}_thumb.png"
+                f"/pdf{self.file_name}_thumb.png"
             )
 
     def write_to_readme(self, readme):
