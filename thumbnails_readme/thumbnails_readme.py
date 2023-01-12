@@ -68,7 +68,7 @@ class ImageThumbnail:
             + self.file_extension.split(".")[-1]
             + self.file_name
             + "_thumb.png"
-            + ")\r"
+            + ")\r\n"
         )
 
 
