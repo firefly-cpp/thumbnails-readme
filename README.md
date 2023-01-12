@@ -15,32 +15,40 @@ Third step: program appends thumbnails into README
 
 ![2023-01-05 11_06_43-000251](https://user-images.githubusercontent.com/33880044/210754629-b974ba51-781e-4f32-9ce9-519b57a8bfd0.png)
 
-## Usage
+## Installation
+
+```sh
+pip install thumbnails-readme
+```
+
+## Additional dependencies
 
 ### Windows
+Windows users have to download poppler for Windows. Add poppler
+path in your Python file (see the main example).
+
 ``` poppler_path = path/to/your/poppler/bin/ ```
 
-for example: ```poppler path = C:/Program Files/poppler-0.68.0/bin```
+for example: ```poppler_path = C:/Program Files/poppler-0.68.0/bin```
+
 ### Linux
-sudo apt-get install poppler-utils
+Linux users can install poppler-utils from the main repositories.
 
-``` poppler_path = None```
-
-### Declare needed variables
+### Example
 
 ``` python
 # Maximum thumbnail size - lower the number, smaller the thumbnail
 MAX_SIZE = (128, 128)
 
 # PDF quality, lower the number, lower the quality
-pdf_quality = 15 
+pdf_quality = 15
 
 # Skiplist - which directories to ignore
 skiplist = (
     ".git",
     )
-    
-    
+
+
 # Path to your directory
 path = os.getcwd()
 path = os.path.dirname(path)

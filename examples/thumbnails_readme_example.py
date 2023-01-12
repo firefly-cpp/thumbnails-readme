@@ -1,6 +1,3 @@
-# pdf2image - Python Imaging Library to work with PDF
-# Linux - sudo apt-get install poppler-utils
-
 import os
 from pathlib import Path
 
