@@ -1,8 +1,7 @@
 # thumbnails-readme --- Create thumbnails
 
 ---
-![PyPI Version](https://img.shields.io/pypi/v/thumbnails-readme.svg)](https://pypi.python.org/pypi/)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/thumbnails-readme.svg)
+![PyPI Version](https://img.shields.io/pypi/v/thumbnails-readme.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/thumbnails-readme.svg)
 [![Downloads](https://pepy.tech/badge/thumbnails-readme)](https://pepy.tech/project/thumbnails-readme)
 [![GitHub license](https://img.shields.io/github/license/firefly-cpp/thumbnails-readme.svg)](https://github.com/firefly-cpp/thumbnails-readme/blob/master/LICENSE)
