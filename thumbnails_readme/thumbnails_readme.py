@@ -29,14 +29,13 @@ class ImageThumbnail:
         """
         Create thumbnail for the raster image
         """
-        new_file_name = self.file_name + "_thumb" + self.file_extension
+        new_file_name = self.file_name + "_thumb.png"
         # Pillow - Python Imaging Library to work with png and jpg
         im = Image.open(self.path_to_file)
         im.thumbnail(self.max_size)
-        # print(path_to_thumbnails_folder)
         im.save(
             f"{path_to_thumbnails_folder}"
-            f"/{self.file_extension.split('.')[-1]}{new_file_name}"
+            f"/{self.file_extension.split('.')[-1].lower()}_{new_file_name}"
         )
 
     def create_pdf_thumbnail(self, path_to_thumbnails_folder, poppler_path):
@@ -46,23 +45,24 @@ class ImageThumbnail:
         if os.name == "nt":
             # Windows - poppler path required
             images = convert_from_path(
-                self.path_to_file, self.pdf_quality, poppler_path=poppler_path
+                self.path_to_file, self.pdf_quality, poppler_path=poppler_path, size=self.max_size[0]
             )
         else:
             # Linux - sudo apt-get install poppler-utils
-            images = convert_from_path(self.path_to_file, self.pdf_quality)
+            images = convert_from_path(self.path_to_file, self.pdf_quality, size=self.max_size[0])
         for image in images:
             image.save(
                 f"{path_to_thumbnails_folder}"
-                f"/pdf{self.file_name}_thumb.png"
+                f"/pdf_{self.file_name}_thumb.png"
             )
     def create_svg_thumbnail(self, path_to_thumbnails_folder):
         """
         Create thumbnail for the SVG
         """
-        cairosvg.svg2png(url=str(self.path_to_file), write_to=
+        cairosvg.svg2png(url=str(self.path_to_file), output_width=self.max_size[0], output_height=self.max_size[1],
+                         write_to=
             f"{path_to_thumbnails_folder}"
-            f"/svg{self.file_name}_thumb.png"
+            f"/svg_{self.file_name}_thumb.png"
          )
 
     def write_to_readme(self, readme):
@@ -74,7 +74,8 @@ class ImageThumbnail:
             + pathlib.PurePath(self.path_to_file).parent.name
             + self.file_name
             + "](/image_thumbnails/"
-            + self.file_extension.split(".")[-1]
+            + self.file_extension.split(".")[-1].lower()
+            + "_"
             + self.file_name
             + "_thumb.png"
             + ")\r\n"
@@ -124,13 +125,12 @@ def crawl(
 ):
 
     # Open the file README.md and read the content
-    # r+ to allow reading and writing
+    # a+ to allow reading and writing
     with open(path_to_readme, "a") as readme:
         # Write TITLE # Generated Thumbnails  to the README.md file
         readme.write("\n# Generated Thumbnails\n")
 
         # Loop through all files and folders in the current directory
-        # for directory in os.walk(path):
         for root, directory, files in os.walk(path, topdown=True):
             directory[:] = [d for d in directory if d not in skiplist]
             # ignore root files
@@ -145,15 +145,15 @@ def crawl(
                     MAX_SIZE,
                     pdf_quality,
                 )
-                if image.file_extension in [".jpg", ".jpeg", ".png", ".gif"]:
+                if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif"]:
                     image.create_raster_thumbnail(path_to_thumbnails_folder)
-                elif image.file_extension == ".pdf":
+                elif image.file_extension.lower() in [".pdf"]:
                     image.create_pdf_thumbnail(
                         path_to_thumbnails_folder, poppler_path
                     )
-                elif image.file_extension == ".svg":
+                elif image.file_extension.lower() in [".svg"]:
                     image.create_svg_thumbnail(path_to_thumbnails_folder)
-                if image.file_extension in [
+                if image.file_extension.lower() in [
                     ".jpg",
                     ".jpeg",
                     ".png",

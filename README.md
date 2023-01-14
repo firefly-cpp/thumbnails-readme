@@ -18,12 +18,12 @@ First step: program finds graphical material in your directories
 * ['fig1.pdf', 'fig2.pdf', 'fig3.pdf', 'fig4.pdf']
 
 Second step: program generates thumbnails for each material identified in folders
-![2023-01-05 10_54_02-000244](https://user-images.githubusercontent.com/33880044/210753771-7612a1c4-c7ec-4c75-9033-69652b816841.png)
+![2023-01-05 10_54_06-000245](https://user-images.githubusercontent.com/33880044/212469322-e4fe49af-404d-40cd-85f8-63fd3eee162d.png)
 
 Third step: program appends thumbnails into README
 `![Thumbnail](/image_thumbnails/PDFpismenka-interval_thumb.png)`
 
-![2023-01-05 11_06_43-000251](https://user-images.githubusercontent.com/33880044/210754629-b974ba51-781e-4f32-9ce9-519b57a8bfd0.png)
+![2023-01-14 12_18_19-PyThumbnails – README md](https://user-images.githubusercontent.com/33880044/212469375-10a4bef4-26fe-44e3-b188-b0ce7e0b186a.png)
 
 ## Installation
 
