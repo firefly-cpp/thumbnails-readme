@@ -26,9 +26,31 @@ Third step: program appends thumbnails into README
 ![2023-01-14 12_18_19-PyThumbnails – README md](https://user-images.githubusercontent.com/33880044/212469375-10a4bef4-26fe-44e3-b188-b0ce7e0b186a.png)
 
 ## Installation
+Install thumbnails-readme with pip:
 
 ```sh
 pip install thumbnails-readme
+```
+
+In case you want to install directly from the source code, use:
+
+```sh
+$ git clone https://github.com/firefly-cpp/thumbnails-readme.git
+$ cd thumbnails-readme
+$ poetry build
+$ python setup.py install
+```
+
+To install thumbnails-readme on Alpine Linux, please use:
+
+```sh
+$ apk add py3-thumbnails-readme
+```
+
+To install thumbnails-readme on Arch Linux, please use an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers):
+
+```sh
+$ yay -Syyu python-thumbnails-readme
 ```
 
 ## Additional dependencies
