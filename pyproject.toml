@@ -13,7 +13,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.7"
 pdf2image = "^1.16.2"
 Pillow = "^9.4.0"
 CairoSVG = "^2.6.0"
