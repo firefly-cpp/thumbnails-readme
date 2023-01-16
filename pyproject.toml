@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "thumbnails-readme"
-version = "0.1.3"
+version = "0.1.4"
 description = "Create thumbnails from Git folders"
 authors = ["Rok Kukovec <rok.kukovec@um.si>", "Iztok Fister, Jr. <iztok@iztok-jr-fister.eu>"]
 keywords = ['thumbnails', 'README']
