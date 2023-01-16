@@ -12,6 +12,10 @@
 ## Description
 The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders and show thumbnails in the README file of that Git folder.
 
+## GitHub action
+
+See also the associated GitHub action in the following repository: [thumbnails-readme-action](https://github.com/KukovecRok/thumbnails-readme-action).
+
 ## How it works?
 
 First step: program finds graphical material in your directories
