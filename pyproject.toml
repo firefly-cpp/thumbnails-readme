@@ -16,6 +16,7 @@ include = [
 python = "^3.11"
 pdf2image = "^1.16.2"
 Pillow = "^9.4.0"
+CairoSVG = "^2.6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
