@@ -7,15 +7,12 @@ from pdf2image import convert_from_path
 from PIL import Image
 import cairosvg
 
-
 class ImageThumbnail:
     """
     Class for the image
     """
 
-    def __init__(
-        self, path_to_file, file_name, file_extension, max_size, pdf_quality
-    ):
+    def __init__(self, path_to_file, file_name, file_extension, max_size, pdf_quality):
         """
         Default constructor
         """
@@ -45,25 +42,31 @@ class ImageThumbnail:
         if os.name == "nt":
             # Windows - poppler path required
             images = convert_from_path(
-                self.path_to_file, self.pdf_quality, poppler_path=poppler_path, size=self.max_size[0]
+                self.path_to_file,
+                self.pdf_quality,
+                poppler_path=poppler_path,
+                size=self.max_size[0],
             )
         else:
             # Linux - sudo apt-get install poppler-utils
-            images = convert_from_path(self.path_to_file, self.pdf_quality, size=self.max_size[0])
+            images = convert_from_path(
+                self.path_to_file, self.pdf_quality, size=self.max_size[0]
+            )
         for image in images:
             image.save(
-                f"{path_to_thumbnails_folder}"
-                f"/pdf_{self.file_name}_thumb.png"
+                f"{path_to_thumbnails_folder}" f"/pdf_{self.file_name}_thumb.png"
             )
+
     def create_svg_thumbnail(self, path_to_thumbnails_folder):
         """
         Create thumbnail for the SVG
         """
-        cairosvg.svg2png(url=str(self.path_to_file), output_width=self.max_size[0], output_height=self.max_size[1],
-                         write_to=
-            f"{path_to_thumbnails_folder}"
-            f"/svg_{self.file_name}_thumb.png"
-         )
+        cairosvg.svg2png(
+            url=str(self.path_to_file),
+            output_width=self.max_size[0],
+            output_height=self.max_size[1],
+            write_to=f"{path_to_thumbnails_folder}" f"/svg_{self.file_name}_thumb.png",
+        )
 
     def write_to_readme(self, readme):
         """
@@ -90,13 +93,9 @@ def prepare_readme(path_to_readme):
         split_filename_extension[0] + "_temp" + split_filename_extension[1]
     )
 
-    with open(path_to_readme) as readme, open(
-        path_to_readme_temp, "w"
-    ) as readme_two:
+    with open(path_to_readme) as readme, open(path_to_readme_temp, "w") as readme_two:
         for line in readme:
-            if not any(
-                remove_line in line for remove_line in lines_for_removal
-            ):
+            if not any(remove_line in line for remove_line in lines_for_removal):
                 readme_two.write(line)
         readme.close()
         readme_two.close()
@@ -148,9 +147,7 @@ def crawl(
                 if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif"]:
                     image.create_raster_thumbnail(path_to_thumbnails_folder)
                 elif image.file_extension.lower() in [".pdf"]:
-                    image.create_pdf_thumbnail(
-                        path_to_thumbnails_folder, poppler_path
-                    )
+                    image.create_pdf_thumbnail(path_to_thumbnails_folder, poppler_path)
                 elif image.file_extension.lower() in [".svg"]:
                     image.create_svg_thumbnail(path_to_thumbnails_folder)
                 if image.file_extension.lower() in [

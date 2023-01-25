@@ -3,16 +3,16 @@ import pathlib
 from pathlib import Path
 
 from PIL import Image
-
 from thumbnails_readme import __version__
-from thumbnails_readme.thumbnails_readme import (ImageThumbnail,
-                                                 prepare_readme,
-                                                 prepare_thumbnails_folder)
+from thumbnails_readme.thumbnails_readme import (
+    ImageThumbnail,
+    prepare_readme,
+    prepare_thumbnails_folder,
+)
 
 # Workaround for Windows cairosvg import error
 # can use GIMP / Inkscape instead
 # os.environ["path"] += r";C:\Program Files\UniConvertor-2.0rc5\dlls"
-
 
 TESTFILE_CONTENTS_BEFORE = """# thumbnails-readme --- Create thumbnails\n\n---"""
 
@@ -56,7 +56,6 @@ def test_readme_creation():
 
     assert os.path.exists("./___README.md") == 1
 
-
 def test_readme_preparation():
     prepare_readme("./___README.md")
     with open("./___README.md", "r") as readme:
@@ -77,8 +76,8 @@ def create_jpg_image():
 
 
 # Test default png, works with different extensions: jpg, svg, pdf
-def test_png_image(file_extension=".png"):
-    file = "example" + file_extension
+def test_png_image():
+    file = "example.png"
     image = ImageThumbnail(
         Path(path),
         os.path.splitext(file)[0],
@@ -97,34 +96,105 @@ def test_png_image(file_extension=".png"):
         + "_thumb.png"
         + ")\r\n"
     )
-    return readme_line
+    assert (
+        str(readme_line)
+        == "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + "example](/image_thumbnails/png_example_thumb.png)\r\n"
+    )
 
 
 def test_jpg_image():
-    file_extension = ".jpg"
-    readme_line = test_png_image(file_extension)
+    file = "example.jpg"
+    image = ImageThumbnail(
+        Path(path),
+        os.path.splitext(file)[0],
+        os.path.splitext(file)[1],
+        MAX_SIZE,
+        pdf_quality,
+    )
+    readme_line = (
+        "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + image.file_name
+        + "](/image_thumbnails/"
+        + image.file_extension.split(".")[-1].lower()
+        + "_"
+        + image.file_name
+        + "_thumb.png"
+        + ")\r\n"
+    )
     assert (
         str(readme_line)
-        == "![thumbnails-readmeexample](/image_thumbnails/jpg_example_thumb.png)\r\n"
+        == "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + "example](/image_thumbnails/jpg_example_thumb.png)\r\n"
     )
 
 
 def test_svg_image():
-    file_extension = ".svg"
-    readme_line = test_png_image(file_extension)
+    file = "example.svg"
+    image = ImageThumbnail(
+        Path(path),
+        os.path.splitext(file)[0],
+        os.path.splitext(file)[1],
+        MAX_SIZE,
+        pdf_quality,
+    )
+    readme_line = (
+        "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + image.file_name
+        + "](/image_thumbnails/"
+        + image.file_extension.split(".")[-1].lower()
+        + "_"
+        + image.file_name
+        + "_thumb.png"
+        + ")\r\n"
+    )
     assert (
         str(readme_line)
-        == "![thumbnails-readmeexample](/image_thumbnails/svg_example_thumb.png)\r\n"
+        == "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + "example](/image_thumbnails/svg_example_thumb.png)\r\n"
     )
 
 
 def test_pdf_image():
-    file_extension = ".pdf"
-    readme_line = test_png_image(file_extension)
+    file = "example.pdf"
+    image = ImageThumbnail(
+        Path(path),
+        os.path.splitext(file)[0],
+        os.path.splitext(file)[1],
+        MAX_SIZE,
+        pdf_quality,
+    )
+    readme_line = (
+        "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + image.file_name
+        + "](/image_thumbnails/"
+        + image.file_extension.split(".")[-1].lower()
+        + "_"
+        + image.file_name
+        + "_thumb.png"
+        + ")\r\n"
+    )
     assert (
         str(readme_line)
-        == "![thumbnails-readmeexample](/image_thumbnails/pdf_example_thumb.png)\r\n"
+        == "!["
+        + pathlib.PurePath(image.path_to_file).parent.name
+        + "example](/image_thumbnails/pdf_example_thumb.png)\r\n"
     )
+
+
+def cleanup():
+    os.remove("./examplefile.png")
+    assert os.path.exists("./examplefile.png") == 0
+    os.remove("./examplefile.jpg")
+    assert os.path.exists("./examplefile.jpg") == 0
+    os.remove("./___README.md")
+    assert os.path.exists("./___README.md") == 0
 
 
 # Due to windows path issues, the tests are not run on windows
