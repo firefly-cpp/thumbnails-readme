@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2) (2023-01-24)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.1.4...0.2)
+
+**Closed issues:**
+
+- Tests [\#8](https://github.com/firefly-cpp/thumbnails-readme/issues/8)
+
+**Merged pull requests:**
+
+- Add test-suite [\#9](https://github.com/firefly-cpp/thumbnails-readme/pull/9) ([KukovecRok](https://github.com/KukovecRok))
+
 ## [0.1.4](https://github.com/firefly-cpp/thumbnails-readme/tree/0.1.4) (2023-01-16)
 
 [Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.1.3...0.1.4)
