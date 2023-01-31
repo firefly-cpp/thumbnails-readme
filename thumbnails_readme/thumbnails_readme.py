@@ -71,9 +71,12 @@ class ImageThumbnail:
     def write_to_readme(self, readme):
         """
         Write to README.md
+        Create a link that opens the
+        original image around thumbnails
+        image that is showed in the README.md
         """
         readme.write(
-            "!["
+            "[!["
             + pathlib.PurePath(self.path_to_file).parent.name
             + self.file_name
             + "](/image_thumbnails/"
@@ -81,7 +84,12 @@ class ImageThumbnail:
             + "_"
             + self.file_name
             + "_thumb.png"
-            + ")\r\n"
+            + ")]("
+            + pathlib.PurePath(self.path_to_file).parent.name
+            + "/"
+            + self.file_name
+            + self.file_extension
+            +")\n"
         )
 
 
