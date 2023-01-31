@@ -71,6 +71,9 @@ class ImageThumbnail:
     def write_to_readme(self, readme):
         """
         Write to README.md
+        Create a link that opens the
+        original image around thumbnails
+        image that is showed in the README.md
         """
         readme.write(
             "[!["
@@ -86,7 +89,7 @@ class ImageThumbnail:
             + "/"
             + self.file_name
             + self.file_extension
-            +")"
+            +")\n"
         )
 
 
