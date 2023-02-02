@@ -68,13 +68,16 @@ class ImageThumbnail:
             write_to=f"{path_to_thumbnails_folder}" f"/svg_{self.file_name}_thumb.png",
         )
 
-    def write_to_readme(self, readme):
+    def write_to_readme(self, readme, path):
         """
         Write to README.md
         Create a link that opens the
         original image around thumbnails
         image that is showed in the README.md
         """
+        relative_path = str(self.path_to_file).replace(path, "")
+        relative_path = pathlib.Path(relative_path)
+        relative_path = str(pathlib.Path(*relative_path.parts[1:]))
         readme.write(
             "[!["
             + pathlib.PurePath(self.path_to_file).parent.name
@@ -85,10 +88,7 @@ class ImageThumbnail:
             + self.file_name
             + "_thumb.png"
             + ")]("
-            + pathlib.PurePath(self.path_to_file).parent.name
-            + "/"
-            + self.file_name
-            + self.file_extension
+            + relative_path
             +")\n"
         )
 
@@ -166,4 +166,4 @@ def crawl(
                     ".pdf",
                     ".svg",
                 ]:
-                    image.write_to_readme(readme)
+                    image.write_to_readme(readme, path)
