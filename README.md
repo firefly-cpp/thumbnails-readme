@@ -1,3 +1,7 @@
+<p align="center">
+  <img alt="logo" width="300" src=".git/images/logo.png">
+</p>
+
 # thumbnails-readme --- Create thumbnails
 
 ---
