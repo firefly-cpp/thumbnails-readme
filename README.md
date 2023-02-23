@@ -112,6 +112,9 @@ thumbnails_readme.prepare_readme(path_to_readme)
 # Generate thumbnails
 thumbnails_readme.generate_thumbnails(path, path_to_thumbnails_folder, path_to_readme, MAX_SIZE, pdf_quality, skiplist)
 ```
+## Use Cases
+
+[https://github.com/firefly-cpp/figures](https://github.com/firefly-cpp/figures)
 
 ## License
 
