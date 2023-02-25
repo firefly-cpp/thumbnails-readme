@@ -1,3 +1,7 @@
+<p align="center">
+  <img alt="logo" width="300" src=".github/images/logo.png">
+</p>
+
 # thumbnails-readme --- Create thumbnails
 
 ---
@@ -108,6 +112,9 @@ thumbnails_readme.prepare_readme(path_to_readme)
 # Generate thumbnails
 thumbnails_readme.generate_thumbnails(path, path_to_thumbnails_folder, path_to_readme, MAX_SIZE, pdf_quality, skiplist)
 ```
+## Use Cases
+
+[https://github.com/firefly-cpp/figures](https://github.com/firefly-cpp/figures)
 
 ## License
 
