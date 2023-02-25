@@ -80,7 +80,6 @@ class ImageThumbnail:
         relative_path = str(pathlib.Path(*relative_path.parts[1:]))
         readme.write(
             "[!["
-            + pathlib.PurePath(self.path_to_file).parent.name
             + self.file_name
             + "](/image_thumbnails/"
             + self.file_extension.split(".")[-1].lower()
@@ -152,7 +151,7 @@ def crawl(
                     MAX_SIZE,
                     pdf_quality,
                 )
-                if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif"]:
+                if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif", ".bmp"]:
                     image.create_raster_thumbnail(path_to_thumbnails_folder)
                 elif image.file_extension.lower() in [".pdf"]:
                     image.create_pdf_thumbnail(path_to_thumbnails_folder, poppler_path)
@@ -163,6 +162,7 @@ def crawl(
                     ".jpeg",
                     ".png",
                     ".gif",
+                    ".bmp",
                     ".pdf",
                     ".svg",
                 ]:
