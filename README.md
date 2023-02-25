@@ -1,8 +1,6 @@
-<p align="center">
-  <img alt="logo" width="300" src=".github/images/logo_background.png">
-</p>
-
 # thumbnails-readme --- Create thumbnails
+
+## Create thumbnails for raster and vector images in parent and its subdirectories and append them to the README.md file
 
 ---
 ![PyPI Version](https://img.shields.io/pypi/v/thumbnails-readme.svg)
@@ -13,8 +11,15 @@
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Percentage of issues still open")
 
+<p align="center">
+  <img alt="logo" width="300" src=".github/images/logo_background.png">
+</p>
+
+
 ## Description
 The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders and show thumbnails in the README file of that Git folder.
+
+Current supported filetype extensions are: ".jpg", ".jpeg", ".png", ".gif", ".pdf" and ".svg".
 
 ## GitHub action
 
@@ -72,7 +77,7 @@ path in your Python file (see the main example).
 for example: ```poppler_path = C:/Program Files/poppler-0.68.0/bin```
 
 ### Linux
-Linux users can install poppler-utils from the main repositories.
+Linux's users can install poppler-utils from the main repositories.
 
 ### Example
 

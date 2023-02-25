@@ -151,7 +151,7 @@ def crawl(
                     MAX_SIZE,
                     pdf_quality,
                 )
-                if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif"]:
+                if image.file_extension.lower() in [".jpg", ".jpeg", ".png", ".gif", ".bmp"]:
                     image.create_raster_thumbnail(path_to_thumbnails_folder)
                 elif image.file_extension.lower() in [".pdf"]:
                     image.create_pdf_thumbnail(path_to_thumbnails_folder, poppler_path)
@@ -162,6 +162,7 @@ def crawl(
                     ".jpeg",
                     ".png",
                     ".gif",
+                    ".bmp",
                     ".pdf",
                     ".svg",
                 ]:
