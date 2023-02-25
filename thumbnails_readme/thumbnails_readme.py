@@ -80,7 +80,6 @@ class ImageThumbnail:
         relative_path = str(pathlib.Path(*relative_path.parts[1:]))
         readme.write(
             "[!["
-            + pathlib.PurePath(self.path_to_file).parent.name
             + self.file_name
             + "](/image_thumbnails/"
             + self.file_extension.split(".")[-1].lower()
