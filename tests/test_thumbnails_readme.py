@@ -26,10 +26,6 @@ path_to_thumbnails_folder = Path(path + "/image_thumbnails")
 path_to_readme = Path(path + "/___README.md")
 
 
-def test_version():
-    assert __version__ == "0.2.4"
-
-
 def test_thumbnails_folder_creation():
     try:
         os.rmdir("\\image_thumbnails")
