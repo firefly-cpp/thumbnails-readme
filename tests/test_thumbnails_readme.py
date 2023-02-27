@@ -27,7 +27,7 @@ path_to_readme = Path(path + "/___README.md")
 
 
 def test_version():
-    assert __version__ == "0.2.3"
+    assert __version__ == "0.2.4"
 
 
 def test_thumbnails_folder_creation():
