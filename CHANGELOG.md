@@ -1,5 +1,60 @@
 # Changelog
 
+## [Unreleased](https://github.com/firefly-cpp/thumbnails-readme/tree/HEAD)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.4...HEAD)
+
+**Merged pull requests:**
+
+- Remove assert version test [\#20](https://github.com/firefly-cpp/thumbnails-readme/pull/20) ([KukovecRok](https://github.com/KukovecRok))
+- Update test - assert new version [\#19](https://github.com/firefly-cpp/thumbnails-readme/pull/19) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.2.4](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2.4) (2023-02-25)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.3...0.2.4)
+
+**Closed issues:**
+
+- Add logo [\#16](https://github.com/firefly-cpp/thumbnails-readme/issues/16)
+
+**Merged pull requests:**
+
+- A few updates [\#18](https://github.com/firefly-cpp/thumbnails-readme/pull/18) ([KukovecRok](https://github.com/KukovecRok))
+- add logo [\#17](https://github.com/firefly-cpp/thumbnails-readme/pull/17) ([rhododendrom](https://github.com/rhododendrom))
+
+## [0.2.3](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2.3) (2023-02-02)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.2...0.2.3)
+
+**Closed issues:**
+
+- Links [\#12](https://github.com/firefly-cpp/thumbnails-readme/issues/12)
+
+**Merged pull requests:**
+
+- bump version to 0.2.3 [\#15](https://github.com/firefly-cpp/thumbnails-readme/pull/15) ([KukovecRok](https://github.com/KukovecRok))
+- Update markdown relative\_path to original images [\#14](https://github.com/firefly-cpp/thumbnails-readme/pull/14) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.2.2](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2.2) (2023-01-31)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.1...0.2.2)
+
+**Merged pull requests:**
+
+- Issue Links \#12 [\#13](https://github.com/firefly-cpp/thumbnails-readme/pull/13) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.2.1](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2.1) (2023-01-26)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2...0.2.1)
+
+**Closed issues:**
+
+- AssertionErrors on Alpine Linux [\#10](https://github.com/firefly-cpp/thumbnails-readme/issues/10)
+
+**Merged pull requests:**
+
+- Update tests - issue \#10 [\#11](https://github.com/firefly-cpp/thumbnails-readme/pull/11) ([KukovecRok](https://github.com/KukovecRok))
+
 ## [0.2](https://github.com/firefly-cpp/thumbnails-readme/tree/0.2) (2023-01-24)
 
 [Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.1.4...0.2)
