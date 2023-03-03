@@ -59,28 +59,31 @@ class ImageThumbnail:
             images = convert_from_path(
                 self.path_to_file, self.pdf_quality, size=self.max_size[0]
             )
+        # If there is more than one page in the PDF, create an animation
         if len(images) > 1:
+            # Create a thumbnail for each page in the PDF
             for image in images:
+                # Save each image as png
                 image.save(
                     f"{path_to_thumbnails_folder}"
                     f"/pdf_to_gif_image_{self.file_name}{images.index(image)+1}_thumb.png"
                 )
-
-            fp_in = f"{path_to_thumbnails_folder}/pdf_to_gif_image_{self.file_name}*_thumb.png"
-            fp_out = f"{path_to_thumbnails_folder}/pdf_animation_{self.file_name}.gif"
+            # Create glob regex pattern for created pdf--> png images
+            file_pattern_input = f"{path_to_thumbnails_folder}/pdf_to_gif_image_{self.file_name}*_thumb.png"
+            file_pattern_output = f"{path_to_thumbnails_folder}/pdf_animation_{self.file_name}.gif"
 
             with contextlib.ExitStack() as stack:
-                # load images by globbing - file pattern and sort
+                # Load images by globbing - file pattern and sort
                 png_images = (
                     stack.enter_context(Image.open(f))
-                    for f in sorted(glob.glob(fp_in))
+                    for f in sorted(glob.glob(file_pattern_input))
                 )
 
-                # extract  first image from iterator
+                # Extract first image from iterator
                 png_image = next(png_images)
 
                 png_image.save(
-                    fp=fp_out,
+                    fp=file_pattern_output,
                     append_images=png_images,
                     format="GIF",
                     save_all=True,
@@ -88,10 +91,12 @@ class ImageThumbnail:
                     loop=0,
                     size=self.max_size[0],
                 )
+
+                # Write to README.md
                 self.write_to_readme(readme, path, True)
 
             # Remove all the png thumb images for animation
-            for png_images in glob.glob(fp_in):
+            for png_images in glob.glob(file_pattern_input):
                 os.remove(png_images)
         else:
             for image in images:
@@ -104,6 +109,7 @@ class ImageThumbnail:
     def create_svg_thumbnail(self, path_to_thumbnails_folder):
         """
         Create thumbnail for the SVG
+        Call cairosvg library
         """
         cairosvg.svg2png(
             url=str(self.path_to_file),
@@ -119,7 +125,13 @@ class ImageThumbnail:
         Create a link that opens the
         original image around thumbnails
         image that is showed in the README.md
+        file. The boolean Animated is used
+        to distinguish between multipage
+        PDFs since their thumbnails
+        are animated and files are
+        named differently
         """
+
         relative_path = str(self.path_to_file).replace(path, "")
         relative_path = pathlib.Path(relative_path)
         relative_path = str(pathlib.Path(*relative_path.parts[1:]))
@@ -192,19 +204,28 @@ def crawl(
     skiplist,
 ):
     # Open the file README.md and read the content
-    # a+ to allow reading and writing
+    # "a" to allow reading and writing
     with open(path_to_readme, "a") as readme:
-        # Write TITLE # Generated Thumbnails  to the README.md file
+        # Write TITLE # Generated Thumbnails to the README.md file
         readme.write("\n# Generated Thumbnails\n")
 
         # Loop through all files and folders in the current directory
         for root, directory, files in os.walk(path, topdown=True):
             directory[:] = [d for d in directory if d not in skiplist]
-            # ignore root files
-            if root == os.path.dirname(path):
-                continue
-            # JPG, PNG for files in directory
+            # For all image files in directory
             for file in files:
+                # ignore files that are not images
+                if os.path.splitext(file)[1].lower() not in [
+                    ".jpg",
+                    "jpeg",
+                    ".png",
+                    ".gif",
+                    ".bmp",
+                    ".pdf",
+                    ".svg",
+                ]:
+                    continue
+                # Create ImageThumbnail object
                 image = ImageThumbnail(
                     Path(root + "/" + file),
                     os.path.splitext(file)[0],
