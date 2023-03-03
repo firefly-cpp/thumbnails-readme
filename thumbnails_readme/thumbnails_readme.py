@@ -215,7 +215,15 @@ def crawl(
             # For all image files in directory
             for file in files:
                 # ignore files that are not images
-                if os.path.splitext(file)[1].lower() not in [".jpg", "jpeg", ".png", ".gif", ".bmp", ".pdf", ".svg"]:
+                if os.path.splitext(file)[1].lower() not in [
+                    ".jpg",
+                    "jpeg",
+                    ".png",
+                    ".gif",
+                    ".bmp",
+                    ".pdf",
+                    ".svg",
+                ]:
                     continue
                 # Create ImageThumbnail object
                 image = ImageThumbnail(
