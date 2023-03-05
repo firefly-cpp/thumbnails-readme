@@ -3,7 +3,6 @@ import pathlib
 from pathlib import Path
 
 from PIL import Image
-from thumbnails_readme import __version__
 from thumbnails_readme.thumbnails_readme import (
     ImageThumbnail,
     prepare_readme,
@@ -14,7 +13,7 @@ from thumbnails_readme.thumbnails_readme import (
 # can use GIMP / Inkscape instead
 # os.environ["path"] += r";C:\Program Files\UniConvertor-2.0rc5\dlls"
 
-TESTFILE_CONTENTS_BEFORE = """# thumbnails-readme --- Create thumbnails\n\n---"""
+TESTFILE_README_CONTENTS = """# thumbnails-readme --- Create thumbnails\n\n---"""
 
 MAX_SIZE = (128, 128)
 pdf_quality = 15
@@ -23,7 +22,8 @@ path = os.getcwd()
 path = os.path.dirname(path + "/tests")
 skiplist = ("image_thumbnails",)
 path_to_thumbnails_folder = Path(path + "/image_thumbnails")
-path_to_readme = Path(path + "/___README.md")
+path_to_readme = Path(path + "./README.md")
+
 
 
 def test_thumbnails_folder_creation():
@@ -32,14 +32,12 @@ def test_thumbnails_folder_creation():
     except:
         pass
 
-    prepare_thumbnails_folder(".\\image_thumbnails")
-    assert os.path.exists(".\\image_thumbnails") == 1
-    os.rmdir(".\\image_thumbnails")
-    assert os.path.exists(".\\image_thumbnails") == 0
+    prepare_thumbnails_folder(path_to_thumbnails_folder)
+    assert os.path.exists(path_to_thumbnails_folder) == 1
 
 
 def test_readme_creation():
-    TESTFILE: str = "___README.md"
+    TESTFILE: str = "README.md"
 
     try:
         os.remove(TESTFILE)
@@ -47,25 +45,25 @@ def test_readme_creation():
         pass
 
     with open(TESTFILE, "w", encoding="utf-8") as filewrite:
-        filewrite.write(TESTFILE_CONTENTS_BEFORE)
+        filewrite.write(TESTFILE_README_CONTENTS)
         filewrite.flush()
 
-    assert os.path.exists("./___README.md") == 1
+    assert os.path.exists("./README.md") == 1
 
 def test_readme_preparation():
-    prepare_readme("./___README.md")
-    with open("./___README.md", "r") as readme:
+    prepare_readme("./README.md")
+    with open("./README.md", "r") as readme:
         contents = readme.read()
-        assert contents == TESTFILE_CONTENTS_BEFORE
+        assert contents == TESTFILE_README_CONTENTS
 
 
-def create_png_image():
+def test_create_png_image():
     image = Image.new("RGB", (128, 128))
     image.save("examplefile.png", "PNG")
     assert os.path.exists("./examplefile.png") == 1
 
 
-def create_jpg_image():
+def test_create_jpg_image():
     image = Image.new("RGB", (128, 128))
     image.save("examplefile.jpg", "JPEG")
     assert os.path.exists("./examplefile.jpg") == 1
@@ -184,30 +182,47 @@ def test_pdf_image():
     )
 
 
-def cleanup():
+def test_animate_pdf_image():
+    file = "example-long.pdf"
+    image = ImageThumbnail(
+        Path(path),
+        os.path.splitext(file)[0],
+        os.path.splitext(file)[1],
+        MAX_SIZE,
+        pdf_quality,
+    )
+
+    relative_path = str(image.path_to_file).replace(path, "")
+    relative_path = pathlib.Path(relative_path)
+    relative_path = str(pathlib.Path(*relative_path.parts[1:]))
+
+    readme_line = (
+        "[!["
+        + image.file_name
+        + "](/image_thumbnails/"
+        + "pdf_animation_"
+        + image.file_name
+        + ".gif"
+        + ")]("
+        + relative_path
+        + "/"
+        + image.file_name
+        + image.file_extension
+        + ")\n"
+    )
+
+    assert (
+        str(readme_line)
+        == "[![example-long](/image_thumbnails/pdf_animation_example-long.gif)](./example-long.pdf)\n"
+    )
+
+
+def test_cleanup():
     os.remove("./examplefile.png")
     assert os.path.exists("./examplefile.png") == 0
     os.remove("./examplefile.jpg")
     assert os.path.exists("./examplefile.jpg") == 0
-    os.remove("./___README.md")
-    assert os.path.exists("./___README.md") == 0
-
-
-# Due to windows path issues, the tests are not run on windows
-# To test locally on windows, uncomment the following lines
-"""
-if __name__ == "__main__":
-    test_version()
-    test_thumbnails_folder_creation()
-    test_readme_creation()
-
-    test_readme_preparation()
-
-    create_png_image()
-    create_jpg_image()
-
-    test_png_image()
-    test_jpg_image()
-    test_svg_image()
-    test_pdf_image()
-"""
+    os.remove("./README.md")
+    assert os.path.exists("./README.md") == 0
+    os.rmdir(path_to_thumbnails_folder)
+    assert os.path.exists(path_to_thumbnails_folder) == 0

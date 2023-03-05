@@ -199,10 +199,36 @@ def crawl(
     path_to_readme,
     poppler_path,
     path_to_thumbnails_folder,
-    MAX_SIZE,
+    max_size,
     pdf_quality,
     skiplist,
 ):
+    # Supported image formats
+    all_supported_formats = [
+        ".bmp",
+        ".gif",
+        ".ico",
+        "jpeg",
+        ".jpg",
+        ".png",
+        ".tga",
+        ".tiff",
+        ".webp",
+        ".pdf",
+        ".svg",
+    ]
+    # Supported raster image formats
+    supported_raster_formats = [
+        ".bmp",
+        ".gif",
+        ".ico",
+        "jpeg",
+        ".jpg",
+        ".png",
+        ".tga",
+        ".tiff",
+        ".webp",
+    ]
     # Open the file README.md and read the content
     # "a" to allow reading and writing
     with open(path_to_readme, "a") as readme:
@@ -215,37 +241,28 @@ def crawl(
             # For all image files in directory
             for file in files:
                 # ignore files that are not images
-                if os.path.splitext(file)[1].lower() not in [
-                    ".jpg",
-                    "jpeg",
-                    ".png",
-                    ".gif",
-                    ".bmp",
-                    ".pdf",
-                    ".svg",
-                ]:
+                if (
+                    os.path.splitext(file)[1].lower()
+                    not in all_supported_formats
+                ):
                     continue
                 # Create ImageThumbnail object
                 image = ImageThumbnail(
                     Path(root + "/" + file),
                     os.path.splitext(file)[0],
                     os.path.splitext(file)[1],
-                    MAX_SIZE,
+                    max_size,
                     pdf_quality,
                 )
-                if image.file_extension.lower() in [
-                    ".jpg",
-                    ".jpeg",
-                    ".png",
-                    ".gif",
-                    ".bmp",
-                ]:
+                if image.file_extension.lower() in supported_raster_formats:
                     image.create_raster_thumbnail(path_to_thumbnails_folder)
                     image.write_to_readme(readme, path)
+
                 elif image.file_extension.lower() in [".pdf"]:
                     image.create_pdf_thumbnail(
                         path_to_thumbnails_folder, poppler_path, readme, path
                     )
+
                 elif image.file_extension.lower() in [".svg"]:
                     image.create_svg_thumbnail(path_to_thumbnails_folder)
                     image.write_to_readme(readme, path)
