@@ -164,7 +164,8 @@ class ImageThumbnail:
 
 # Prepare README.md file - remove old content
 def prepare_readme(path_to_readme):
-    lines_for_removal = ["# Generated Thumbnails", "(/image_thumbnails/"]
+    # Remove old content in upcoming package version "# Generated Thumbnails"
+    lines_for_removal = ["# Generated Thumbnails", "# Thumbnails", "(/image_thumbnails/"]
     split_filename_extension = os.path.splitext(path_to_readme)
     path_to_readme_temp = (
         split_filename_extension[0] + "_temp" + split_filename_extension[1]
@@ -197,11 +198,11 @@ def prepare_thumbnails_folder(path_to_thumbnails_folder):
 def crawl(
     path,
     path_to_readme,
-    poppler_path,
     path_to_thumbnails_folder,
     max_size,
     pdf_quality,
     skiplist,
+    poppler_path = None,
 ):
     # Supported image formats
     all_supported_formats = [
@@ -232,8 +233,8 @@ def crawl(
     # Open the file README.md and read the content
     # "a" to allow reading and writing
     with open(path_to_readme, "a") as readme:
-        # Write TITLE # Generated Thumbnails to the README.md file
-        readme.write("\n# Generated Thumbnails\n")
+        # Write TITLE # Thumbnails to the README.md file
+        readme.write("\n# Thumbnails\n")
 
         # Loop through all files and folders in the current directory
         for root, directory, files in os.walk(path, topdown=True):
