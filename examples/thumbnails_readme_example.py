@@ -1,3 +1,4 @@
+# Linux - sudo apt-get install poppler-utils
 import os
 from pathlib import Path
 
@@ -8,10 +9,9 @@ MAX_SIZE = (128, 128)
 # PDF quality, lower the number, lower the quality
 pdf_quality = 15
 
-# Linux
-poppler_path = None
 # Windows
-# poppler_path = Path('C:/Program Files/poppler-0.68.0/bin')
+#poppler_path = Path('C:/Program Files/poppler-0.68.0/bin')
+
 path = os.getcwd()
 path = os.path.dirname(path)
 
@@ -22,7 +22,9 @@ skiplist = (
     ".idea",
     "idea",
     "image_thumbnails",
+    ".pytest_cache",
     "thumbnails_readme",
+    "venv",
 )
 
 path_to_thumbnails_folder = Path(path + "/image_thumbnails")
@@ -34,9 +36,9 @@ if __name__ == "__main__":
     thumbnails_readme.crawl(
         path,
         path_to_readme,
-        poppler_path,
         path_to_thumbnails_folder,
         MAX_SIZE,
         pdf_quality,
         skiplist,
+        poppler_path=None,
     )

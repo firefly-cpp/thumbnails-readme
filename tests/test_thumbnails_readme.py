@@ -1,29 +1,32 @@
 import os
 import pathlib
+import shutil
 from pathlib import Path
 
 from PIL import Image
-from thumbnails_readme.thumbnails_readme import (
-    ImageThumbnail,
-    prepare_readme,
-    prepare_thumbnails_folder,
-)
+from thumbnails_readme.thumbnails_readme import (ImageThumbnail, crawl,
+                                                 prepare_readme,
+                                                 prepare_thumbnails_folder)
 
 # Workaround for Windows cairosvg import error
 # can use GIMP / Inkscape instead
-# os.environ["path"] += r";C:\Program Files\UniConvertor-2.0rc5\dlls"
+# poppler_path = Path('C:/Program Files/poppler-0.68.0/bin')
+# os.environ['path'] += r';C:/Program Files/poppler-0.68.0/bin'
+# os.environ['path'] += r';C:\Program Files\GTK2-Runtime Win64\bin'
 
-TESTFILE_README_CONTENTS = """# thumbnails-readme --- Create thumbnails\n\n---"""
 
-MAX_SIZE = (128, 128)
+TESTFILE_README_CONTENTS = (
+    """# thumbnails-readme --- Create thumbnails\n\n---"""
+)
+
+max_size = (128, 128)
 pdf_quality = 15
 poppler_path = None
 path = os.getcwd()
 path = os.path.dirname(path + "/tests")
 skiplist = ("image_thumbnails",)
 path_to_thumbnails_folder = Path(path + "/image_thumbnails")
-path_to_readme = Path(path + "./README.md")
-
+path_to_readme = Path(path + "/README.md")
 
 
 def test_thumbnails_folder_creation():
@@ -37,7 +40,7 @@ def test_thumbnails_folder_creation():
 
 
 def test_readme_creation():
-    TESTFILE: str = "README.md"
+    TESTFILE: str = "./README.md"
 
     try:
         os.remove(TESTFILE)
@@ -49,6 +52,7 @@ def test_readme_creation():
         filewrite.flush()
 
     assert os.path.exists("./README.md") == 1
+
 
 def test_readme_preparation():
     prepare_readme("./README.md")
@@ -76,7 +80,7 @@ def test_png_image():
         Path(path),
         os.path.splitext(file)[0],
         os.path.splitext(file)[1],
-        MAX_SIZE,
+        max_size,
         pdf_quality,
     )
     readme_line = (
@@ -104,7 +108,7 @@ def test_jpg_image():
         Path(path),
         os.path.splitext(file)[0],
         os.path.splitext(file)[1],
-        MAX_SIZE,
+        max_size,
         pdf_quality,
     )
     readme_line = (
@@ -132,7 +136,7 @@ def test_svg_image():
         Path(path),
         os.path.splitext(file)[0],
         os.path.splitext(file)[1],
-        MAX_SIZE,
+        max_size,
         pdf_quality,
     )
     readme_line = (
@@ -160,7 +164,7 @@ def test_pdf_image():
         Path(path),
         os.path.splitext(file)[0],
         os.path.splitext(file)[1],
-        MAX_SIZE,
+        max_size,
         pdf_quality,
     )
     readme_line = (
@@ -188,7 +192,7 @@ def test_animate_pdf_image():
         Path(path),
         os.path.splitext(file)[0],
         os.path.splitext(file)[1],
-        MAX_SIZE,
+        max_size,
         pdf_quality,
     )
 
@@ -217,12 +221,72 @@ def test_animate_pdf_image():
     )
 
 
+def test_crawl():
+    crawl(
+        path,
+        path_to_readme,
+        path_to_thumbnails_folder,
+        max_size,
+        pdf_quality,
+        skiplist,
+        poppler_path=None,
+    )
+    assert os.path.exists("./README.md") == 1
+
+    with open("./README.md", "r") as readme:
+        readme_lines = readme.readlines()
+        assert any(
+            "# thumbnails-readme --- Create thumbnails" in line
+            for line in readme_lines
+        )
+        assert any("\n" in line for line in readme_lines)
+        assert any("---" in line for line in readme_lines)
+        assert any("# Thumbnails" in line for line in readme_lines)
+        assert any(
+            "[![example-long](/image_thumbnails/pdf_animation_example-long.gif)](tests/example-long.pdf)"
+            or "[![example-long](/image_thumbnails/pdf_animation_example-long.gif)](example-long.pdf)"
+            in line
+            for line in readme_lines
+        )
+        assert any(
+            "[![example-pdf](/image_thumbnails/pdf_example-pdf_thumb.png)](tests/example-pdf.pdf)"
+            or "[![example-pdf](/image_thumbnails/pdf_example-pdf_thumb.png)](example-pdf.pdf)"
+            in line
+            for line in readme_lines
+        )
+        assert any(
+            "[![example-svg](/image_thumbnails/svg_example-svg_thumb.png)](tests/example-svg.svg)"
+            or "[![example-svg](/image_thumbnails/svg_example-svg_thumb.png)](example-svg.svg)"
+            in line
+            for line in readme_lines
+        )
+        assert any(
+            "[![examplefile](/image_thumbnails/png_examplefile_thumb.png)](examplefile.png)"
+            in line
+            for line in readme_lines
+        )
+        assert any(
+            "[![examplefile](/image_thumbnails/jpg_examplefile_thumb.png)](examplefile.jpg)"
+            in line
+            for line in readme_lines
+        )
+
+
 def test_cleanup():
     os.remove("./examplefile.png")
     assert os.path.exists("./examplefile.png") == 0
     os.remove("./examplefile.jpg")
     assert os.path.exists("./examplefile.jpg") == 0
-    os.remove("./README.md")
-    assert os.path.exists("./README.md") == 0
-    os.rmdir(path_to_thumbnails_folder)
+    shutil.rmtree(path_to_thumbnails_folder)
     assert os.path.exists(path_to_thumbnails_folder) == 0
+    os.remove("./README.md")
+
+    assert os.path.exists("./README.md") == 0
+    assert os.path.exists("./image_thumbnails/jpg_examplefile_thumb.png") == 0
+    assert (
+        os.path.exists("./image_thumbnails/pdf_animation_example-long.gif")
+        == 0
+    )
+    assert os.path.exists("./image_thumbnails/pdf_example-pdf_thumb.png") == 0
+    assert os.path.exists("./image_thumbnails/png_examplefile_thumb.png") == 0
+    assert os.path.exists("./image_thumbnails/svg_example-svg_thumb.png") == 0

@@ -19,7 +19,9 @@
 ## Description
 The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders and show thumbnails in the README file of that Git folder.
 
-Current supported filetype extensions are: ".jpg", ".jpeg", ".png", ".gif", ".pdf" and ".svg".
+### Multi-pages PDFs are turned into .gif thumbnails
+
+Current supported filetype extensions are: ".bmp", ".gif", ".ico", "jpeg", ".jpg", ".png", ".tga", ".tiff", ".webp", ".pdf" and ".svg"
 
 ## GitHub action
 
@@ -36,7 +38,7 @@ Second step: program generates thumbnails for each material identified in folder
 Third step: program appends thumbnails into README
 `![Thumbnail](/image_thumbnails/PDFpismenka-interval_thumb.png)`
 
-![2023-01-14 12_18_19-PyThumbnails – README md](https://user-images.githubusercontent.com/33880044/212469375-10a4bef4-26fe-44e3-b188-b0ce7e0b186a.png)
+![thumbnails-readme-md-image](https://user-images.githubusercontent.com/33880044/224533101-11618c49-61b5-4b6a-bccd-5a1164430bca.png)
 
 ## Installation
 Install thumbnails-readme with pip:
@@ -115,7 +117,7 @@ thumbnails_readme.prepare_thumbnails_folder(path_to_thumbnails_folder)
 thumbnails_readme.prepare_readme(path_to_readme)
 
 # Generate thumbnails
-thumbnails_readme.generate_thumbnails(path, path_to_thumbnails_folder, path_to_readme, MAX_SIZE, pdf_quality, skiplist)
+thumbnails_readme.crawl(path, path_to_readme, path_to_thumbnails_folder, MAX_SIZE, pdf_quality, skiplist, poppler_path)
 ```
 ## Use Cases
 

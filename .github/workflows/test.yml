@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    if: github.event.head_commit.message != 'test-action' # delete this
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -19,14 +20,20 @@ jobs:
         shell: bash
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3.3.0
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4.5.0
       with:
         python-version: ${{ matrix.python-version }}
     - name: Get full Python version
       id: full-python-version
       run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+    - name: Install poppler ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: sudo apt-get install poppler-utils
+    - name: Install poppler MacOS
+      if: ${{ matrix.os == 'macos-latest' }}
+      run: brew install poppler
     - name: Install poetry
       run: |
         curl -sL https://install.python-poetry.org | python - -y
@@ -39,7 +46,7 @@ jobs:
     - name: Configure poetry
       run: poetry config virtualenvs.in-project true
     - name: Set up cache
-      uses: actions/cache@v3
+      uses: actions/cache@v3.2.6
       id: cache
       with:
         path: .venv
