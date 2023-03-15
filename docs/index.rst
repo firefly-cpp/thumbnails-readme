@@ -7,10 +7,10 @@ Welcome to thumbnails_readme's documentation!
 =============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
-
+   modules
 
 Indices and tables
 ==================
