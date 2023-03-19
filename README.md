@@ -123,6 +123,8 @@ thumbnails_readme.crawl(path, path_to_readme, path_to_thumbnails_folder, MAX_SIZ
 
 [https://github.com/firefly-cpp/figures](https://github.com/firefly-cpp/figures)
 
+[https://github.com/firefly-cpp/posters](https://github.com/firefly-cpp/posters)
+
 ## License
 
 This package is distributed under the MIT License. This license can be found online at <http://www.opensource.org/licenses/MIT>.
