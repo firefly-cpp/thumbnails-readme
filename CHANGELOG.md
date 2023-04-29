@@ -2,10 +2,45 @@
 
 ## [Unreleased](https://github.com/firefly-cpp/thumbnails-readme/tree/HEAD)
 
-[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.4...HEAD)
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.3.2...HEAD)
 
 **Merged pull requests:**
 
+- Bump cairosvg from 2.6.0 to 2.7.0 [\#28](https://github.com/firefly-cpp/thumbnails-readme/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Sphinx docs [\#27](https://github.com/firefly-cpp/thumbnails-readme/pull/27) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.3.2](https://github.com/firefly-cpp/thumbnails-readme/tree/0.3.2) (2023-03-12)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.3.1...0.3.2)
+
+**Closed issues:**
+
+- Enhance tests [\#25](https://github.com/firefly-cpp/thumbnails-readme/issues/25)
+
+**Merged pull requests:**
+
+- Tests, workflow dependencies, README.md [\#26](https://github.com/firefly-cpp/thumbnails-readme/pull/26) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.3.1](https://github.com/firefly-cpp/thumbnails-readme/tree/0.3.1) (2023-03-05)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.3.0...0.3.1)
+
+**Closed issues:**
+
+- Generate animation from the presentation in pdf [\#21](https://github.com/firefly-cpp/thumbnails-readme/issues/21)
+
+**Merged pull requests:**
+
+- Update tests, refactor [\#24](https://github.com/firefly-cpp/thumbnails-readme/pull/24) ([KukovecRok](https://github.com/KukovecRok))
+- Condition fix [\#23](https://github.com/firefly-cpp/thumbnails-readme/pull/23) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.3.0](https://github.com/firefly-cpp/thumbnails-readme/tree/0.3.0) (2023-03-03)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.2.4...0.3.0)
+
+**Merged pull requests:**
+
+- PDF animations - Fix issue \#21 [\#22](https://github.com/firefly-cpp/thumbnails-readme/pull/22) ([KukovecRok](https://github.com/KukovecRok))
 - Remove assert version test [\#20](https://github.com/firefly-cpp/thumbnails-readme/pull/20) ([KukovecRok](https://github.com/KukovecRok))
 - Update test - assert new version [\#19](https://github.com/firefly-cpp/thumbnails-readme/pull/19) ([KukovecRok](https://github.com/KukovecRok))
 
