@@ -128,7 +128,7 @@ thumbnails_readme.crawl(path, path_to_readme, path_to_thumbnails_folder, MAX_SIZ
 
 ## License
 
-This package is distributed under the MIT License. This license can be found online at <http://www.opensource.org/licenses/MIT>.
+This package is distributed under the BSD-3-Clause license. This license can be found online at <http://www.opensource.org/licenses/bsd-3-clause/>.
 
 ## Disclaimer
 
