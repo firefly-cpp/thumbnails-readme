@@ -11,7 +11,9 @@ max_size = (128, 128)
 pdf_quality = 15
 
 # Windows
-poppler_path = Path(r'C:\Program Files\poppler-0.68.0\bin')
+poppler_path = r'C:\Program Files\poppler-0.68.0\bin'
+# Linux
+poppler_path = None
 
 path = Path.cwd()
 path = path.parent

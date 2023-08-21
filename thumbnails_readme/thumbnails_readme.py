@@ -217,7 +217,7 @@ def crawl(
         path_to_thumbnails_folder: Path,
         max_size: tuple,
         pdf_quality: int,
-        skiplist: tuple[str],
+        skiplist: tuple,
         poppler_path: None or Path = None,
 ) -> None:
     """Create thumbnails for all images in the folders, write to README.md."""
