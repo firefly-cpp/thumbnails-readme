@@ -6,6 +6,7 @@ import os
 import pathlib
 import shutil
 from pathlib import Path
+from urllib.error import HTTPError
 
 import cairosvg
 from pdf2image import convert_from_path
@@ -117,6 +118,7 @@ class ImageThumbnail:
                              path_to_thumbnails_folder: Path,
                              ) -> None:
         """Create thumbnail for the SVG cairosvg library."""
+        print(str(self.path_to_file), self.max_size[0], self.max_size[1])
         cairosvg.svg2png(
             url=str(self.path_to_file),
             output_width=self.max_size[0],
@@ -215,7 +217,7 @@ def crawl(
         path_to_thumbnails_folder: Path,
         max_size: tuple,
         pdf_quality: int,
-        skiplist: list,
+        skiplist: tuple[str],
         poppler_path: None or Path = None,
 ) -> None:
     """Create thumbnails for all images in the folders, write to README.md."""
@@ -280,5 +282,12 @@ def crawl(
                     )
 
                 elif image.file_extension.lower() in ['.svg']:
-                    image.create_svg_thumbnail(path_to_thumbnails_folder)
-                    image.write_to_readme(readme, path)
+                    try:
+                        image.create_svg_thumbnail(path_to_thumbnails_folder)
+                        image.write_to_readme(readme, path)
+                    except HTTPError:
+                        print(
+                            'HTTPError: Check if the SVG file is valid and '
+                            'accessible, file ' + str(image.path_to_file),
+                        )
+                        continue

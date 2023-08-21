@@ -140,6 +140,7 @@ This framework is provided as-is, and there are no guarantees that it fits your 
 
 
 
+
 # Thumbnails
 [![example-long](/image_thumbnails/pdf_animation_example-long.gif)](tests\example-long.pdf)
 [![example-pdf](/image_thumbnails/pdf_example-pdf_thumb.png)](tests\example-pdf.pdf)
@@ -204,7 +205,6 @@ This framework is provided as-is, and there are no guarantees that it fits your 
 [![BSD](/image_thumbnails/pdf_BSD_thumb.png)](tests\figures-main\other\BSD.pdf)
 [![BSD](/image_thumbnails/svg_BSD_thumb.png)](tests\figures-main\other\BSD.svg)
 [![BSD_attribution](/image_thumbnails/pdf_BSD_attribution_thumb.png)](tests\figures-main\other\BSD_attribution.pdf)
-[![BSD_attribution](/image_thumbnails/svg_BSD_attribution_thumb.png)](tests\figures-main\other\BSD_attribution.svg)
 [![BSD_no_attribution](/image_thumbnails/pdf_BSD_no_attribution_thumb.png)](tests\figures-main\other\BSD_no_attribution.pdf)
 [![hvala](/image_thumbnails/pdf_hvala_thumb.png)](tests\figures-main\other\hvala.pdf)
 [![LinuxDistro](/image_thumbnails/pdf_LinuxDistro_thumb.png)](tests\figures-main\other\LinuxDistro.pdf)
