@@ -1,7 +1,8 @@
-# Configuration file for the Sphinx documentation builder.
-import sys
+"""Configuration file for the Sphinx documentation builder."""
 import os
-sys.path.insert(0, os.path.abspath(".."))
+import sys
+
+sys.path.insert(0, os.path.abspath('..'))
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
@@ -11,9 +12,6 @@ sys.path.insert(0, os.path.abspath(".."))
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -36,7 +34,8 @@ release = '0.3.2'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autosectionlabel',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -59,3 +58,17 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Bibtex
+bibtex_bibfiles = ['refs.bib']
+
+# Bibliography style
+bibtex_default_style = 'unsrt'
+
+# Add logo for project
+# TO-DO: Add logo
+html_logo = '../.github/logo/does_not_exist_yet.png'
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}

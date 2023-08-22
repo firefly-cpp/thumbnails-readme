@@ -37,7 +37,6 @@ Second step: program generates thumbnails for each material identified in folder
 ![2023-01-05 10_54_06-000245](https://user-images.githubusercontent.com/33880044/212469322-e4fe49af-404d-40cd-85f8-63fd3eee162d.png)
 
 Third step: program appends thumbnails into README
-`![Thumbnail](/image_thumbnails/PDFpismenka-interval_thumb.png)`
 
 ![thumbnails-readme-md-image](https://user-images.githubusercontent.com/33880044/224533101-11618c49-61b5-4b6a-bccd-5a1164430bca.png)
 
@@ -133,3 +132,8 @@ This package is distributed under the BSD-3-Clause license. This license can be 
 ## Disclaimer
 
 This framework is provided as-is, and there are no guarantees that it fits your purposes or that it is bug-free. Use it at your own risk!
+
+# Thumbnails
+[![example-long](/image_thumbnails/pdf_animation_example-long.gif)](tests/example-long.pdf)
+[![example-pdf](/image_thumbnails/pdf_example-pdf_thumb.png)](tests/example-pdf.pdf)
+[![example-svg](/image_thumbnails/svg_example-svg_thumb.png)](tests/example-svg.svg)
