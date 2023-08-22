@@ -25,7 +25,7 @@ TESTFILE_README_CONTENTS = (
 max_size = (128, 128)
 pdf_quality = 15
 # Windows
-# poppler_path = Path(r'C:\Program Files\poppler-0.68.0\bin')
+# poppler_path = r'C:\Program Files\poppler-0.68.0\bin'
 # Linux
 poppler_path = None
 path = Path.cwd()
@@ -66,7 +66,7 @@ def test_readme_preparation() -> None:
     prepare_readme(Path('./README.md'))
     with Path('./README.md').open('r') as readme:
         contents = readme.read()
-        print("\n")
+        print('\n')
         print(contents)
         print(TESTFILE_README_CONTENTS)
         assert contents == TESTFILE_README_CONTENTS
