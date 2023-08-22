@@ -14,5 +14,5 @@ __all__ = [
     'prepare_thumbnails_folder',
 ]
 
-__version__ = '0.3.2'
+__version__ = '0.4.0'
 __project__ = 'thumbnails_readme'

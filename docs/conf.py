@@ -22,7 +22,7 @@ copyright = '2023, Rok Kukovec, Iztok Fister Jr.'
 author = 'Rok Kukovec, Iztok Fister Jr.'
 
 # The full version, including alpha/beta/rc tags
-release = '0.3.2'
+release = '0.4.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
