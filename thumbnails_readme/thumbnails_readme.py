@@ -176,7 +176,7 @@ class ImageThumbnail:
 def prepare_readme(path_to_readme: Path) -> None:
     """Remove old content in upcoming package version.
 
-    "# Generated Thumbnails".
+    remove "# Generated Thumbnails".
     """
     lines_for_removal = ['# Generated Thumbnails',
                          '# Thumbnails',
@@ -196,8 +196,8 @@ def prepare_readme(path_to_readme: Path) -> None:
                 readme_two.write(line)
         readme.close()
         readme_two.close()
-        Path.unlink(path_to_readme)
-        Path.rename(path_to_readme_temp, path_to_readme)
+        Path.unlink(Path(path_to_readme))
+        Path.rename(Path(path_to_readme_temp), path_to_readme)
 
 
 # Create image_thumbnails folder if it doesn't exist

@@ -63,9 +63,12 @@ def test_readme_creation() -> None:
 
 def test_readme_preparation() -> None:
     """Test preparation of README.md file."""
-    prepare_readme('./README.md')
+    prepare_readme(Path('./README.md'))
     with Path('./README.md').open('r') as readme:
         contents = readme.read()
+        print("\n")
+        print(contents)
+        print(TESTFILE_README_CONTENTS)
         assert contents == TESTFILE_README_CONTENTS
 
 

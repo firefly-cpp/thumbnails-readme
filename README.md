@@ -133,18 +133,6 @@ This package is distributed under the BSD-3-Clause license. This license can be 
 
 This framework is provided as-is, and there are no guarantees that it fits your purposes or that it is bug-free. Use it at your own risk!
 
-
-
-
-
-
-
-
-
-
-
-
-
 # Thumbnails
 [![example-long](/image_thumbnails/pdf_animation_example-long.gif)](tests/example-long.pdf)
 [![example-pdf](/image_thumbnails/pdf_example-pdf_thumb.png)](tests/example-pdf.pdf)
