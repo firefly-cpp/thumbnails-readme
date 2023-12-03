@@ -11,6 +11,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/thumbnails-readme.svg)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/firefly-cpp/thumbnails-readme.svg)](http://isitmaintained.com/project/firefly-cpp/thumbnails-readme "Percentage of issues still open")
+[![Packaging status](https://repology.org/badge/tiny-repos/python:thumbnails-readme.svg)](https://repology.org/project/python:thumbnails-readme/versions)
 
 <p align="center">
   <img alt="logo" width="300" src=".github/images/logo_background.png">
