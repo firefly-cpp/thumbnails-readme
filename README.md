@@ -18,30 +18,31 @@
 </p>
 
 
-## Description
-The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders and show thumbnails in the README file of that Git folder.
+## Description 📋
+The "thumbnails-readme" package is a simple library devoted to automatically generating thumbnails from a directory. It is explicitly designed to create thumbnails from Git folders. The thumbnails are shown in the README file of that Git folder. 📁🌐📸
 
-### Multi-pages PDFs are turned into .gif thumbnails
+### Multi-pages PDFs are turned into .gif thumbnails 🔄
 
 Current supported filetype extensions are: ".bmp", ".gif", ".ico", "jpeg", ".jpg", ".png", ".tga", ".tiff", ".webp", ".pdf" and ".svg"
 
-## GitHub action
+## GitHub action 🚀
 
 See also the associated GitHub action in the following repository: [thumbnails-readme-action](https://github.com/KukovecRok/thumbnails-readme-action).
 
-## How it works?
+## How does it work? 💡
 
-First step: program finds graphical material in your directories
+In the first step the program finds graphical material in your directories:
 * ['fig1.pdf', 'fig2.pdf', 'fig3.pdf', 'fig4.pdf']
 
-Second step: program generates thumbnails for each material identified in folders
+In the second step the program generates thumbnails for each material identified in folders.
+
 ![2023-01-05 10_54_06-000245](https://user-images.githubusercontent.com/33880044/212469322-e4fe49af-404d-40cd-85f8-63fd3eee162d.png)
 
-Third step: program appends thumbnails into README
+In the third step the program appends thumbnails to the README file.
 
 ![thumbnails-readme-md-image](https://user-images.githubusercontent.com/33880044/224533101-11618c49-61b5-4b6a-bccd-5a1164430bca.png)
 
-## Installation
+## Installation 📦
 Install thumbnails-readme with pip:
 
 ```sh
