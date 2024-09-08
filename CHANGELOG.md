@@ -2,10 +2,33 @@
 
 ## [Unreleased](https://github.com/firefly-cpp/thumbnails-readme/tree/HEAD)
 
-[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.3.2...HEAD)
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.4.1...HEAD)
+
+**Closed issues:**
+
+- Update docs [\#29](https://github.com/firefly-cpp/thumbnails-readme/issues/29)
 
 **Merged pull requests:**
 
+- Bump pillow from 10.2.0 to 10.3.0 [\#34](https://github.com/firefly-cpp/thumbnails-readme/pull/34) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump pillow from 10.0.1 to 10.2.0 [\#33](https://github.com/firefly-cpp/thumbnails-readme/pull/33) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [0.4.1](https://github.com/firefly-cpp/thumbnails-readme/tree/0.4.1) (2023-12-04)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.4.0...0.4.1)
+
+**Merged pull requests:**
+
+- Contribution guide [\#32](https://github.com/firefly-cpp/thumbnails-readme/pull/32) ([lahovniktadej](https://github.com/lahovniktadej))
+- Bump pillow from 9.5.0 to 10.0.1 [\#31](https://github.com/firefly-cpp/thumbnails-readme/pull/31) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [0.4.0](https://github.com/firefly-cpp/thumbnails-readme/tree/0.4.0) (2023-08-22)
+
+[Full Changelog](https://github.com/firefly-cpp/thumbnails-readme/compare/0.3.2...0.4.0)
+
+**Merged pull requests:**
+
+- New version [\#30](https://github.com/firefly-cpp/thumbnails-readme/pull/30) ([KukovecRok](https://github.com/KukovecRok))
 - Bump cairosvg from 2.6.0 to 2.7.0 [\#28](https://github.com/firefly-cpp/thumbnails-readme/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Sphinx docs [\#27](https://github.com/firefly-cpp/thumbnails-readme/pull/27) ([KukovecRok](https://github.com/KukovecRok))
 
