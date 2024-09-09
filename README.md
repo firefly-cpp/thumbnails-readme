@@ -102,17 +102,16 @@ $ yay -Syyu python-thumbnails-readme
 ## 🔗 Additional dependencies
 
 ### Windows
-Windows users have to download poppler for Windows. Add poppler
-path in your Python file (see the main example).
+Windows users have to download poppler for Windows. Add poppler path in your Python file (see the main example).
 
 ``` poppler_path = path/to/your/poppler/bin/ ```
 
-for example: ```poppler_path = C:/Program Files/poppler-0.68.0/bin```
+For example: ```poppler_path = C:/Program Files/poppler-0.68.0/bin```
 
 ### Linux
 Linux's users can install poppler-utils from the main repositories.
 
-## 📓 Example
+## 📓 Examples
 
 ### Examples of Usage
 
@@ -153,9 +152,8 @@ thumbnails_readme.crawl(path, path_to_readme, path_to_thumbnails_folder, MAX_SIZ
 ```
 ## 📂 Use Cases
 
-[https://github.com/firefly-cpp/figures](https://github.com/firefly-cpp/figures)
-
-[https://github.com/firefly-cpp/posters](https://github.com/firefly-cpp/posters)
+- [https://github.com/firefly-cpp/figures](https://github.com/firefly-cpp/figures)
+- [https://github.com/firefly-cpp/posters](https://github.com/firefly-cpp/posters)
 
 ## 🔑 License
 
