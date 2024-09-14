@@ -8,12 +8,11 @@ on:
 
 jobs:
   build:
-    if: github.event.head_commit.message != 'test-action' # delete this
 
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         python-version: ['3.9', '3.10', '3.11', '3.12']
     defaults:
       run:
@@ -33,7 +32,10 @@ jobs:
       run: sudo apt-get install poppler-utils
     - name: Install poppler MacOS
       if: ${{ matrix.os == 'macos-latest' }}
-      run: brew install poppler
+      run: brew install poppler cairo pango gdk-pixbuf libffi
+    - name: Link lib MacOS
+      if: ${{ matrix.os == 'macos-latest' }}
+      run: ln -s /opt/homebrew/lib/libcairo.2.dylib .
     - name: Install poetry
       run: |
         curl -sL https://install.python-poetry.org | python - -y
